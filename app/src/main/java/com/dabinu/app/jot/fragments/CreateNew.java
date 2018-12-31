@@ -1,15 +1,11 @@
 package com.dabinu.app.jot.fragments;
 
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
+
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,13 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.dabinu.app.jot.R;
 import com.dabinu.app.jot.models.NoteModel;
-
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.util.Calendar;
 import java.util.Random;
 
 /**
@@ -36,7 +29,6 @@ public class CreateNew extends Fragment {
 
 
     EditText note;
-    int counter;
     Menu menu;
 
     public CreateNew(){
@@ -52,8 +44,6 @@ public class CreateNew extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_new, container, false);
 
         init(view);
-
-        recursiveTimer();
 
         return view;
     }
@@ -75,17 +65,7 @@ public class CreateNew extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                ++counter;
-
-                if(counter == 1){
-                    MenuItem somText = menu.findItem(R.id.status);
-                    somText.setTitle("");
-                }
-
-                else if(counter == 3){
-                    saveTheFile();
-                    counter = 0;
-                }
+                saveTheFile();
             }
         });
     }
@@ -147,21 +127,5 @@ public class CreateNew extends Fragment {
         }
     }
 
-
-    public void recursiveTimer(){
-        new CountDownTimer(3000, 1000){
-            @Override
-            public void onTick(long l) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                saveTheFile();
-                recursiveTimer();
-
-            }
-        }.start();
-    }
 
 }
