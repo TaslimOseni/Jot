@@ -113,7 +113,7 @@ public class CreateNew extends Fragment {
         try{
             FileOutputStream fos = getActivity().openFileOutput(Integer.toString(code), Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(new NoteModel("hgv", "jgv", "jg")); //todo: modify this
+            oos.writeObject(new NoteModel("hgv", "jgv", "jg", "hjhh")); //todo: modify this
             oos.close();
             fos.close();
 

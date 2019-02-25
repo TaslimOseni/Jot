@@ -5,11 +5,12 @@ import java.io.Serializable;
 /**
  * Created by Taslim Oseni on 12/30/18.
  */
+
 public class NoteModel implements Serializable {
 
-    public String note, date, time;
+    public String note, date, time, id;
 
-    public NoteModel(String note, String date, String time){
+    public NoteModel(String note, String date, String time, String id){
         this.note = note;
         this.date = date;
         this.time = time;
@@ -29,6 +30,10 @@ public class NoteModel implements Serializable {
 
     public String getTime() {
         return time;
+    }
+
+    public String getId() {
+        return id;
     }
 
 }
